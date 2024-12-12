@@ -1,0 +1,50 @@
+# ai-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-service
+  labels:
+    app: ai-service
+    part-of: bestbuy-store
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ai-service
+  template:
+    metadata:
+      labels:
+        app: ai-service
+    spec:
+      containers:
+      - name: ai-service
+        image: bestbuy/ai-service:1.0
+        ports:
+        - containerPort: 3002
+        env:
+        - name: OPENAI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: openai-secret
+              key: api-key
+        - name: GPT4_MODEL_NAME
+          value: "gpt-4"
+        - name: DALLE_MODEL_NAME
+          value: "dall-e-3"
+        - name: MONGODB_URI
+          value: "mongodb://mongodb:27017/products"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-service
+  labels:
+    app: ai-service
+    part-of: bestbuy-store
+spec:
+  ports:
+  - port: 3002
+    targetPort: 3002
+    protocol: TCP
+  selector:
+    app: ai-service
