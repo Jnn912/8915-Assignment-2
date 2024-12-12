@@ -1,0 +1,48 @@
+# order-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-service
+  labels:
+    app: order-service
+    part-of: bestbuy-store
+spec:
+  replicas: 2  # 高可用性配置
+  selector:
+    matchLabels:
+      app: order-service
+  template:
+    metadata:
+      labels:
+        app: order-service
+    spec:
+      containers:
+      - name: order-service
+        image: bestbuy/order-service:1.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: AZURE_SERVICE_BUS_CONNECTION_STRING
+          valueFrom:
+            secretKeyRef:
+              name: azure-service-bus-secret
+              key: connection-string
+        - name: AZURE_SERVICE_BUS_QUEUE_NAME
+          value: "orders"
+        - name: MONGODB_URI
+          value: "mongodb://mongodb:27017/orders"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  labels:
+    app: order-service
+    part-of: bestbuy-store
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+    protocol: TCP
+  selector:
+    app: order-service
