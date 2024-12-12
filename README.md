@@ -6,7 +6,7 @@
 This is a cloud-native application developed for Best Buy's online store, based on microservices architecture. The application enables customers to browse products, place orders, and allows employees to manage products and process orders. Following the design principles of the Algonquin Pet Store (On Steroids), this implementation replaces RabbitMQ with Azure Service Bus as a managed backing service and incorporates AI capabilities for enhanced product descriptions and image generation.
 
 ## Architecture
-![Architecture Diagram](./images/architecture.png)
+![Architecture](./images/architecture.png)
 
 
 ### Architecture Explanation
