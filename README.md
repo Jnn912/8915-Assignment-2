@@ -1,135 +1,102 @@
 # Best Buy Cloud-Native Application
 
-## CST_8915_Assignment2
+## Table of Contents
+- [Overview](#overview)
+- [Updated Architecture](#updated-architecture)
+- [Application and Architecture Description](#application-and-architecture-description)
+- [Deployment Instructions](#deployment-instructions)
+- [Microservices Overview](#microservices-overview)
+- [Docker Images](#docker-images)
+- [Limitations and Issues](#limitations-and-issues)
+- [Demo Video](#demo-video)
 
-## Application Overview
-This is a cloud-native application developed for Best Buy's online store, based on microservices architecture. The application enables customers to browse products, place orders, and allows employees to manage products and process orders. Following the design principles of the Algonquin Pet Store (On Steroids), this implementation replaces RabbitMQ with Azure Service Bus as a managed backing service and incorporates AI capabilities for enhanced product descriptions and image generation.
+---
 
-## Architecture
-<img width="744" alt="Architecture diagram" src="https://github.com/user-attachments/assets/fc09e0d9-64ad-480b-91e3-22d2ba88b6b1" />
+## Overview
+This project is a cloud-native application developed for Best Buy, inspired by the Algonquin Pet Store architecture. The goal is to build a scalable, containerized solution using Kubernetes and integrate AI capabilities for product descriptions and images.
 
-### Architecture Explanation
-The application follows a microservices architecture pattern where each service is independently deployable and scalable. The key enhancement from the original Algonquin Pet Store design is the replacement of RabbitMQ with Azure Service Bus for more robust and managed message queue handling.
+## Updated Architecture
+![Updated Architecture Diagram](architecture-diagram.png)
 
-### Core Services
-* **Store-Front**: Customer-facing web application for browsing and ordering products (Vue.js)
-* **Store-Admin**: Employee-facing web application for managing products and orders (Vue.js)
-* **Order-Service**: Handles order creation and integrates with Azure Service Bus (Node.js)
-* **Product-Service**: Manages product information with CRUD operations (Rust)
-* **Makeline-Service**: Processes orders from the queue (Go)
-* **AI-Service**: Generates product descriptions and images using GPT-4 and DALL-E (Python)
-* **Database**: MongoDB for data persistence
-* **Azure Service Bus**: Managed service for order queue management
+The updated architecture diagram includes:
+- Replacement of RabbitMQ with Azure Service Bus for message queuing.
+- Integration of an AI-Service for product description and image generation using GPT-4 and DALL-E.
 
-### Service Repositories
-| Service | Repository Link |
-|---------|----------------|
-| Store-Front | [store-front-repo](https://github.com/Jnn912/bestbuy-store-front) |
-| Store-Admin | [store-admin-repo](https://github.com/Jnn912/bestbuy-store-admin) |
-| Order-Service | [order-service-repo](https://github.com/Jnn912/bestbuy-order-service) |
-| Product-Service | [product-service-repo](https://github.com/Jnn912/bestbuy-product-service) |
-| Makeline-Service | [makeline-service-repo](https://github.com/Jnn912/bestbuy-makeline-service) |
-| AI-Service | [ai-service-repo](https://github.com/Jnn912/bestbuy-ai-service) |
+## Application and Architecture Description
+The application consists of the following components:
 
-### Docker Images
-| Service | Docker Image Link |
-|---------|------------------|
-| Store-Front | bestbuy/store-front:1.0 |
-| Store-Admin | bestbuy/store-admin:1.0 |
-| Order-Service | bestbuy/order-service:1.0 |
-| Product-Service | bestbuy/product-service:1.0 |
-| Makeline-Service | bestbuy/makeline-service:1.0 |
-| AI-Service | bestbuy/ai-service:1.0 |
+1. **Store-Front (Vue.js)**: Customer-facing interface to browse products and place orders.
+2. **Store-Admin (Vue.js)**: Employee-facing interface for managing products and monitoring orders.
+3. **Order-Service (Node.js)**: Handles order creation and sends data to Azure Service Bus.
+4. **Product-Service (Rust)**: Manages product data (CRUD operations) and integrates with AI-Service for product descriptions and images.
+5. **Makeline-Service (Go)**: Reads order messages from Azure Service Bus and processes them.
+6. **AI-Service (Python)**: Utilizes GPT-4 for generating product descriptions and DALL-E for creating product images.
+7. **MongoDB (Database)**: Stores orders and product data.
 
 ## Deployment Instructions
-
 ### Prerequisites
-- Azure Kubernetes Service (AKS) cluster
-- Azure CLI installed and configured
-- kubectl installed and configured
-- Docker installed
-- Access to Azure Service Bus
-- OpenAI API access (for GPT-4 and DALL-E integration)
+1. **Tools**:
+   - Kubernetes Cluster (e.g., AKS, Minikube)
+   - Docker
+   - Azure CLI
+   - kubectl
 
-### Deployment Steps
+2. **Environment Setup**:
+   - Ensure Azure Service Bus and MongoDB are configured.
+   - Create the necessary Azure resources using Azure CLI.
 
-1. Clone the Repository
-```bash
-git clone https://github.com/YourUsername/24F_LabAssignment2.git
-cd 24F_LabAssignment2
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone <repository-link>
+   cd best-buy-application
+   ```
 
-# Create Azure Service Bus namespace
-az servicebus namespace create \
-    --name bestbuy-servicebus \
-    --resource-group myResourceGroup \
-    --location eastus
+2. Build and push Docker images for each microservice:
+   ```bash
+   docker build -t <dockerhub-username>/store-front ./store-front
+   docker push <dockerhub-username>/store-front
+   # Repeat for other services
+   ```
 
-# Create queue for orders
-az servicebus queue create \
-    --name orders \
-    --namespace-name bestbuy-servicebus \
-    --resource-group myResourceGroup
+3. Deploy services to Kubernetes:
+   ```bash
+   kubectl apply -f deployment-files/
+   ```
 
-# Deploy MongoDB StatefulSet
-kubectl apply -f Deployment-Files/mongodb-statefulset.yaml
+4. Verify all pods are running:
+   ```bash
+   kubectl get pods
+   ```
 
-# Verify MongoDB deployment
-kubectl get statefulset
-kubectl get pvc
+5. Access the application:
+   - Store-Front: `http://<external-ip>/`
+   - Store-Admin: `http://<external-ip>/admin`
 
-# Deploy all microservices
-kubectl apply -f Deployment-Files/store-front-deployment.yaml
-kubectl apply -f Deployment-Files/store-admin-deployment.yaml
-kubectl apply -f Deployment-Files/order-service-deployment.yaml
-kubectl apply -f Deployment-Files/product-service-deployment.yaml
-kubectl apply -f Deployment-Files/makeline-service-deployment.yaml
-kubectl apply -f Deployment-Files/ai-service-deployment.yaml
+## Microservices Overview
+| Microservice      | Description                                         | Repository Link                           |
+|-------------------|-----------------------------------------------------|-------------------------------------------|
+| Store-Front       | Customer-facing interface                          | [Store-Front Repo](#)                     |
+| Store-Admin       | Employee-facing interface                          | [Store-Admin Repo](#)                     |
+| Order-Service     | Handles order creation and integrates with Azure   | [Order-Service Repo](#)                   |
+| Product-Service   | Manages product data and integrates with AI-Service| [Product-Service Repo](#)                 |
+| Makeline-Service  | Processes orders from Azure Service Bus            | [Makeline-Service Repo](#)                |
+| AI-Service        | Generates product descriptions and images          | [AI-Service Repo](#)                      |
 
-# Verify deployments
-kubectl get deployments
-kubectl get pods
-kubectl get services
+## Docker Images
+| Microservice      | Docker Image                                       | Docker Hub Link                           |
+|-------------------|-----------------------------------------------------|-------------------------------------------|
+| Store-Front       | `<dockerhub-username>/store-front`                 | [Link](#)                                 |
+| Store-Admin       | `<dockerhub-username>/store-admin`                 | [Link](#)                                 |
+| Order-Service     | `<dockerhub-username>/order-service`               | [Link](#)                                 |
+| Product-Service   | `<dockerhub-username>/product-service`             | [Link](#)                                 |
+| Makeline-Service  | `<dockerhub-username>/makeline-service`            | [Link](#)                                 |
+| AI-Service        | `<dockerhub-username>/ai-service`                  | [Link](#)                                 |
 
-# Create secret for OpenAI API key
-kubectl create secret generic openai-secret \
-    --from-literal=api-key=your-api-key
-
-# Verify AI service configuration
-kubectl get secrets
-
-# Get service endpoints
-kubectl get services
-
-# Test application health
-kubectl get pods
-kubectl logs <pod-name>
+## Limitations and Issues
+- **Azure Service Bus Latency**: Initial integration testing shows slight delays under high traffic.
+- **AI-Service Response Time**: GPT-4 and DALL-E API calls may experience latency during peak usage.
+- **Scalability of MongoDB**: Requires monitoring and potential sharding for large datasets.
 
 ## Demo Video
-[Demo Video Link](https://youtu.be/your-video-id)
-
-### Video Contents (5 minutes)
-1. Application Architecture Overview (1 minute)
-   - Explanation of microservices architecture
-   - Highlight Azure Service Bus integration
-   - Overview of AI service integration
-
-2. Deployment Demonstration (2 minutes)
-   - Kubernetes deployment process
-   - Service configuration
-   - Verification of running services
-
-3. Application Features (2 minutes)
-   - Store-Front functionality
-     * Product browsing
-     * Order placement
-   - Store-Admin functionality
-     * Product management
-     * Order processing
-   - AI Features Demonstration
-     * GPT-4 generated product descriptions
-     * DALL-E generated product images
-   - Azure Service Bus Integration
-     * Order queue management
-     * Message processing
-
-Note: The complete source code and deployment files can be found in this repository.
+[Watch the Demo Video Here](#)
