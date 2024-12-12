@@ -13,7 +13,21 @@
 ---
 
 ## Overview
-This project is a cloud-native application developed for Best Buy, inspired by the Algonquin Pet Store architecture. The goal is to build a scalable, containerized solution using Kubernetes and integrate AI capabilities for product descriptions and images.
+The Best Buy Cloud-Native Application is a scalable, microservice-based solution designed for e-commerce. This project is inspired by the Algonquin Pet Store architecture and aims to demonstrate proficiency in modern cloud-native technologies, including containerization, Kubernetes orchestration, and AI integration.
+
+### Key Objectives:
+1. **Customer Interface**: Enable customers to browse products, view AI-generated descriptions, and place orders seamlessly.
+2. **Employee Management**: Provide an intuitive admin interface for employees to manage products and monitor orders.
+3. **AI Integration**: Use GPT-4 to generate dynamic product descriptions and DALL-E for creating product images.
+4. **Cloud Scalability**: Deploy all services on Kubernetes with Azure Service Bus as the message broker.
+
+### Technologies Used:
+- **Frontend**: Vue.js
+- **Backend**: Node.js, Rust, Go, Python
+- **Message Queue**: Azure Service Bus
+- **Database**: MongoDB
+- **AI Models**: GPT-4 and DALL-E
+- **Orchestration**: Kubernetes
 
 ## Updated Architecture
 ![Updated Architecture Diagram](architecture-diagram.png)
