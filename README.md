@@ -30,22 +30,26 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 - **Orchestration**: Kubernetes
 
 ## Updated Architecture
-![Updated Architecture Diagram](architecture-diagram.png)
+The updated architecture diagram (shown above) highlights the following components and interactions:
 
-The updated architecture diagram includes:
-- Replacement of RabbitMQ with Azure Service Bus for message queuing.
-- Integration of an AI-Service for product description and image generation using GPT-4 and DALL-E.
-
-## Application and Architecture Description
-The application consists of the following components:
-
-1. **Store-Front (Vue.js)**: Customer-facing interface to browse products and place orders.
+### Key Components:
+1. **Store-Front (Vue.js)**: Customer-facing interface for browsing products and placing orders.
 2. **Store-Admin (Vue.js)**: Employee-facing interface for managing products and monitoring orders.
-3. **Order-Service (Node.js)**: Handles order creation and sends data to Azure Service Bus.
-4. **Product-Service (Rust)**: Manages product data (CRUD operations) and integrates with AI-Service for product descriptions and images.
-5. **Makeline-Service (Go)**: Reads order messages from Azure Service Bus and processes them.
-6. **AI-Service (Python)**: Utilizes GPT-4 for generating product descriptions and DALL-E for creating product images.
-7. **MongoDB (Database)**: Stores orders and product data.
+3. **Order-Service (Node.js)**: Processes customer orders and sends them to Azure Service Bus for asynchronous communication.
+4. **Product-Service (Rust)**: Handles product CRUD operations and integrates with AI-Service for dynamic descriptions and images.
+5. **Makeline-Service (Go)**: Listens to Azure Service Bus for order messages and processes them, updating MongoDB.
+6. **AI-Service (Python)**: Provides REST APIs to generate product descriptions using GPT-4 and images using DALL-E.
+7. **MongoDB**: A NoSQL database used for persisting product and order data.
+8. **Azure Service Bus**: A managed message broker for decoupling services and enabling scalability.
+
+### Component Interactions:
+- **Customer Actions**: Customers interact with Store-Front to view products (via Product-Service) and place orders (via Order-Service).
+- **Employee Actions**: Employees use Store-Admin to manage products and monitor the status of orders.
+- **Order Workflow**:
+   1. Order-Service sends order data to Azure Service Bus.
+   2. Makeline-Service reads order messages, processes them, and updates MongoDB.
+- **AI Integration**: Product-Service makes HTTP requests to AI-Service for generating dynamic content.
+
 
 ## Deployment Instructions
 ### Prerequisites
