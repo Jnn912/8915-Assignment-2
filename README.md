@@ -24,22 +24,22 @@ The application follows a microservices architecture pattern where each service 
 ### Service Repositories
 | Service | Repository Link |
 |---------|----------------|
-| Store-Front | [store-front-repo](https://github.com/YourUsername/store-front) |
-| Store-Admin | [store-admin-repo](https://github.com/YourUsername/store-admin) |
-| Order-Service | [order-service-repo](https://github.com/YourUsername/order-service) |
-| Product-Service | [product-service-repo](https://github.com/YourUsername/product-service) |
-| Makeline-Service | [makeline-service-repo](https://github.com/YourUsername/makeline-service) |
-| AI-Service | [ai-service-repo](https://github.com/YourUsername/ai-service) |
+| Store-Front | [store-front-repo](https://github.com/Jnn912/bestbuy-store-front) |
+| Store-Admin | [store-admin-repo](https://github.com/Jnn912/bestbuy-store-admin) |
+| Order-Service | [order-service-repo](https://github.com/Jnn912/bestbuy-order-service) |
+| Product-Service | [product-service-repo](https://github.com/Jnn912/bestbuy-product-service) |
+| Makeline-Service | [makeline-service-repo](https://github.com/Jnn912/bestbuy-makeline-service) |
+| AI-Service | [ai-service-repo](https://github.com/Jnn912/bestbuy-ai-service) |
 
 ### Docker Images
 | Service | Docker Image Link |
 |---------|------------------|
-| Store-Front | [store-front-image](https://hub.docker.com/r/yourusername/store-front) |
-| Store-Admin | [store-admin-image](https://hub.docker.com/r/yourusername/store-admin) |
-| Order-Service | [order-service-image](https://hub.docker.com/r/yourusername/order-service) |
-| Product-Service | [product-service-image](https://hub.docker.com/r/yourusername/product-service) |
-| Makeline-Service | [makeline-service-image](https://hub.docker.com/r/yourusername/makeline-service) |
-| AI-Service | [ai-service-image](https://hub.docker.com/r/yourusername/ai-service) |
+| Store-Front | bestbuy/store-front:1.0 |
+| Store-Admin | bestbuy/store-admin:1.0 |
+| Order-Service | bestbuy/order-service:1.0 |
+| Product-Service | bestbuy/product-service:1.0 |
+| Makeline-Service | bestbuy/makeline-service:1.0 |
+| AI-Service | bestbuy/ai-service:1.0 |
 
 ## Deployment Instructions
 
