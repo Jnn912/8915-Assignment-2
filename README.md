@@ -31,6 +31,8 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 
 ##  Architecture
 <img width="744" alt="architecture-diagram" src="https://github.com/user-attachments/assets/51e021fa-e50d-47f4-8820-b11f96a487b9" />
+
+
 ### Key Components:
 1. **Store-Front (Vue.js)**: Customer-facing interface for browsing products and placing orders.
 2. **Store-Admin (Vue.js)**: Employee-facing interface for managing products and monitoring orders.
