@@ -62,33 +62,6 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
    - Ensure Azure Service Bus and MongoDB are configured.
    - Create the necessary Azure resources using Azure CLI.
 
-### Steps
-1. Clone the repository:
-   ```bash
-   git clone <repository-link>
-   cd best-buy-application
-   ```
-
-2. Build and push Docker images for each microservice:
-   ```bash
-   docker build -t <dockerhub-username>/store-front ./store-front
-   docker push <dockerhub-username>/store-front
-   # Repeat for other services
-   ```
-
-3. Deploy services to Kubernetes:
-   ```bash
-   kubectl apply -f deployment-files/
-   ```
-
-4. Verify all pods are running:
-   ```bash
-   kubectl get pods
-   ```
-
-5. Access the application:
-   - Store-Front: `http://<external-ip>/`
-   - Store-Admin: `http://<external-ip>/admin`
 
 ## Microservices Overview
 | Microservice      | Description                                         | Repository Link                           |
@@ -101,14 +74,16 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 | AI-Service        | Generates product descriptions and images          | [AI-Service Repo](#)                      |
 
 ## Docker Images
-| Microservice      | Docker Image                                       | Docker Hub Link                           |
+| Microservice      |                                        | Docker Hub Link                           |
 |-------------------|-----------------------------------------------------|-------------------------------------------|
-| Store-Front       | `<dockerhub-username>/store-front`                 | [Link](#)                                 |
-| Store-Admin       | `<dockerhub-username>/store-admin`                 | [Link](#)                                 |
-| Order-Service     | `<dockerhub-username>/order-service`               | [Link](#)                                 |
-| Product-Service   | `<dockerhub-username>/product-service`             | [Link](#)                                 |
-| Makeline-Service  | `<dockerhub-username>/makeline-service`            | [Link](#)                                 |
-| AI-Service        | `<dockerhub-username>/ai-service`                  | [Link](#)                                 |
+| Store-Front       |            | [https://hub.docker.com/r/xijin324/store-front/tags](#)                                 |
+| Store-Admin       |            | [https://hub.docker.com/r/xijin324/store-admin/tags](#)                                 |
+| Order-Service     |            | [https://hub.docker.com/r/xijin324/order-service/tags](#)                                 |
+| Product-Service   |            | [https://hub.docker.com/r/xijin324/product-service/tags](#)                                 |
+| Makeline-Service  |            | [https://hub.docker.com/r/xijin324/makeline-service/tags](#)                                 |
+| AI-Service        |            | [https://hub.docker.com/r/xijin324/ai-service/tags](#)                                 
+| virtual-customer        |      | https://hub.docker.com/r/xijin324/virtual-customer/tags/ai-service/tags                              
+| virtual-worker        |        | https://hub.docker.com/r/xijin324/virtual-worker/tags       
 
 ## Limitations and Issues
 - **Azure Service Bus Latency**: Initial integration testing shows slight delays under high traffic.
