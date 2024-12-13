@@ -60,10 +60,22 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
    - Docker
    - Azure CLI
    - kubectl
+   - Go
+   - Rust
+   - Python
 2. **Environment Setup**:
    - Ensure Azure Service Bus and MongoDB are configured.
    - Create the necessary Azure resources using Azure CLI.
-
+3. ## Steps to Deploy
+   -  Create AKS Cluster
+   -  Create a resource group
+   -  Create an AKS cluster
+   -  Connect to the cluster
+4. ## Deploy Application
+   -  Clone the repository containing the YAML file
+   -  Apply the YAML file
+   -  Verify deployment
+5. ## Access the Application
 ---
 
 ## Microservices Overview
@@ -97,9 +109,8 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 ---
 
 ## Limitations and Issues
-1. **Azure Service Bus Latency**: Slight delays observed under high traffic.
+1. **Problem creating ai**: According to the guidance of the document, set the parameters of AI and select east us as the region. However, the region displayed by AI is Sweden. Although it has no impact on the operation of the overall program, I don't understand why this problem occurs, which causes a lot of delays. For a long time, I tried various settings. Is it because there was a shortage of ai servers in the east us region during the setting, causing the system to automatically set to the Swedish server?
 2. **AI-Service Response Time**: GPT-4 and DALL-E API calls may experience latency during peak usage.
-3. **Scalability of MongoDB**: Requires monitoring and potential sharding for large datasets.
 
 ---
 
