@@ -106,6 +106,9 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 | Virtual-Customer  | [Virtual-Customer Image](https://hub.docker.com/r/xijin324/virtual-customer/tags) |
 | Virtual-Worker    | [Virtual-Worker Image](https://hub.docker.com/r/xijin324/virtual-worker/tags) |
 
+## Docker screenshot <img width="836" alt="Screen Shot 2024-12-13 at 5 34 41 AM" src="https://github.com/user-attachments/assets/33446b95-f305-4f21-add2-fc15a09ccf35" />
+
+
 ---
 
 ## Limitations and Issues
