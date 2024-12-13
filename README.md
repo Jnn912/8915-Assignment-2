@@ -84,8 +84,8 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 | Product-Service   |            | [https://hub.docker.com/r/xijin324/product-service/tags](#)                                 |
 | Makeline-Service  |            | [https://hub.docker.com/r/xijin324/makeline-service/tags](#)                                 |
 | AI-Service        |            | [https://hub.docker.com/r/xijin324/ai-service/tags](#)                                 
-| virtual-customer        |      | https://hub.docker.com/r/xijin324/virtual-customer/tags/ai-service/tags                              
-| virtual-worker        |        | https://hub.docker.com/r/xijin324/virtual-worker/tags       
+| virtual-customer  |            | https://hub.docker.com/r/xijin324/virtual-customer/tags/ai-service/tags                              
+| virtual-worker    |            | https://hub.docker.com/r/xijin324/virtual-worker/tags       
 
 ## Limitations and Issues
 - **Azure Service Bus Latency**: Initial integration testing shows slight delays under high traffic.
