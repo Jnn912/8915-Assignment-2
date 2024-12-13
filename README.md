@@ -113,8 +113,10 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 
 ## Limitations and Issues
 1. **Problem creating ai**: According to the guidance of the document, set the parameters of AI and select east us as the region. However, the region displayed by AI is Sweden. Although it has no impact on the operation of the overall program, I don't understand why this problem occurs, which causes a lot of delays. For a long time, I tried various settings. Is it because there was a shortage of ai servers in the east us region during the setting, causing the system to automatically set to the Swedish server?
-2. **AI-Service Response Time**: GPT-4 and DALL-E API calls may experience latency during peak usage，When testing after the deployment is completed, an error occurs in Ai, Ask AI Assistant and Generate Image either failed at the same time, or one was available and the other was not available, or both were available. It took about 2 hours before it returned to normal. I used the command line to check the running status and there was no error，All background functions appear normal.
-3. **Backstage screenshot**:
+2. ## screenshot <img width="869" alt="Screen Shot 2024-12-13 at 6 30 24 AM" src="https://github.com/user-attachments/assets/a4ec4acc-84b4-4368-a665-69de5137998a" />
+
+3. **AI-Service Response Time**: GPT-4 and DALL-E API calls may experience latency during peak usage，When testing after the deployment is completed, an error occurs in Ai, Ask AI Assistant and Generate Image either failed at the same time, or one was available and the other was not available, or both were available. It took about 2 hours before it returned to normal. I used the command line to check the running status and there was no error，All background functions appear normal.
+4. **Backstage screenshot**:
 ---<img width="888" alt="Screen Shot 2024-12-13 at 5 23 33 AM" src="https://github.com/user-attachments/assets/c6394584-0ee7-4099-a6c8-b936a74869e8" />
 
 <img width="760" alt="Screen Shot 2024-12-13 at 5 24 37 AM" src="https://github.com/user-attachments/assets/52e6e0c2-6a54-458c-a5a8-dd64505f27d8" />
