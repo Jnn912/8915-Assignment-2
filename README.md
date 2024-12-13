@@ -74,8 +74,8 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 | Product-Service   |     | [Product-Service Repo](https://github.com/Jnn912/product-service-L8)|
 | Makeline-Service  |     | [Makeline-Service Repo](https://github.com/Jnn912/makeline-service-L8) |
 | AI-Service        |     | [AI-Service Repo](https://github.com/Jnn912/ai-service-L8)|
-| virtual-worker    |     | [[virtual-worker Repo](https://github.com/Jnn912/virtual-worker-L8)|
-| virtual-customer  |     | [[virtual-customer Repo](https://github.com/Jnn912/virtual-customer-L8)|
+| virtual-worker    |     | [virtual-worker Repo](https://github.com/Jnn912/virtual-worker-L8)|
+| virtual-customer  |     | [virtual-customer Repo](https://github.com/Jnn912/virtual-customer-L8)|
 
 ## Docker Images
 | Microservice      |                                        | Docker Hub Link                           |
