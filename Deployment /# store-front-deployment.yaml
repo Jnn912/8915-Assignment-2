@@ -1,0 +1,59 @@
+# store-front-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-front
+  labels:
+    app: store-front
+    part-of: bestbuy-store
+spec:
+  replicas: 2  # 增加副本数提高可用性
+  selector:
+    matchLabels:
+      app: store-front
+  template:
+    metadata:
+      labels:
+        app: store-front
+    spec:
+      containers:
+      - name: store-front
+        image: bestbuy/store-front:1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: VUE_APP_ORDER_SERVICE_URL
+          value: "http://order-service:3000"
+        - name: VUE_APP_PRODUCT_SERVICE_URL
+          value: "http://product-service:3001"
+        - name: VUE_APP_AI_SERVICE_URL
+          value: "http://ai-service:3002"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-front
+  labels:
+    app: store-front
+    part-of: bestbuy-store
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: store-front
