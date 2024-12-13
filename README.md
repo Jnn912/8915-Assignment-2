@@ -66,14 +66,16 @@ The Best Buy Cloud-Native Application is a scalable, microservice-based solution
 
 
 ## Microservices Overview
-| Microservice      | Description                                         | Repository Link                           |
+| Microservice      |                                   | Repository Link                           |
 |-------------------|-----------------------------------------------------|-------------------------------------------|
-| Store-Front       | Customer-facing interface                          | [Store-Front Repo](#)                     |
-| Store-Admin       | Employee-facing interface                          | [Store-Admin Repo](#)                     |
-| Order-Service     | Handles order creation and integrates with Azure   | [Order-Service Repo](#)                   |
-| Product-Service   | Manages product data and integrates with AI-Service| [Product-Service Repo](#)                 |
-| Makeline-Service  | Processes orders from Azure Service Bus            | [Makeline-Service Repo](#)                |
-| AI-Service        | Generates product descriptions and images          | [AI-Service Repo](#)                      |
+| Store-Front       |     | [Store-Front Repo](https://github.com/Jnn912/store-front-L8)       |
+| Store-Admin       |     | [Store-Admin Repo](https://github.com/Jnn912/store-admin-L8)       |
+| Order-Service     |     | [Order-Service Repo](https://github.com/Jnn912/order-service-L8)   |
+| Product-Service   |     | [Product-Service Repo](https://github.com/Jnn912/product-service-L8)|
+| Makeline-Service  |     | [Makeline-Service Repo](https://github.com/Jnn912/makeline-service-L8) |
+| AI-Service        |     | [AI-Service Repo](https://github.com/Jnn912/ai-service-L8)|
+| virtual-worker    |     | [[virtual-worker Repo](https://github.com/Jnn912/virtual-worker-L8)|
+| virtual-customer  |     | [[virtual-customer Repo](https://github.com/Jnn912/virtual-customer-L8)|
 
 ## Docker Images
 | Microservice      |                                        | Docker Hub Link                           |
